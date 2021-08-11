@@ -1,8 +1,13 @@
 <h1>Blogs#show</h1>
 <p>Find me in app/views/blogs/show.html.erb</p>
-<h3><%= @blog.title %></h3>
+<div class="container-fluid mt-3">
+  <h3><%= @blog.title %></h3>
 <p><%= @blog.content %></p>
 
-<%= link_to "Edit", edit_blog_path(@blog.id) %>
-<%= link_to "Delete", blog_path(@blog.id), method: :delete %>
-<%= link_to "Back", root_url %>
+<%= link_to "Edit", edit_blog_path(@blog.id), class: 'btn btn-outline-primary' %>
+<%= link_to "Delete", blog_path(@blog.id), method: :delete , class: 'btn btn-outline-danger'%>
+<%= link_to "Back", root_url, class: 'btn btn-outline-dark' %>
+
+  
+</div>
+

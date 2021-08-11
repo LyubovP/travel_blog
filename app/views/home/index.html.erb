@@ -1,10 +1,13 @@
-<% name = current_user.present? ? current_user.email : 'Stranger' %>
-<h2>Welcome, <%= name %> </h2>
-<h1>Travel Blog </h1>
-<p>Find me in app/views/home/index.html.erb</p>
-<h2>FEATURED POSTS</h2>
-
-<% @blogs.each do |blog| %>
-    <h3><%= link_to blog.title, blog_path(blog.id) %></h3>
-    <p><%= blog.content %></p>
-<% end %>
+<div class="container">
+    <% name = current_user.present? ? current_user.email : 'Stranger' %>
+    <h2>Welcome, <%= name %> </h2>
+    <h1>Travel Blog </h1>
+    <p>Find me in app/views/home/index.html.erb</p>
+    <h2>FEATURED POSTS</h2>
+<div class="card border-light mb-3 center">
+    <% @blogs.each do |blog| %>
+        <h3><%= link_to blog.title, blog_path(blog.id) %></h3>
+        <p><%= blog.content %></p>
+    <% end %>
+</div>
+</div>
