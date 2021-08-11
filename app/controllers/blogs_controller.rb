@@ -42,7 +42,7 @@ class BlogsController < ApplicationController
     @blog = Blog.find(params[:id])
     
     @blog.destroy
-    redirect_to :action => :index
+    redirect_to root_url
   end
 
 
