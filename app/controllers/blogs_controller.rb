@@ -1,9 +1,12 @@
 class BlogsController < ApplicationController
+  before_action :set_blog, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
   def index
     @blogs = Blog.all
   end
 
   def show
+    # @blog = current_user.blogs.find(params[:id])
     @blog = Blog.find(params[:id])
   end
 
@@ -16,10 +19,9 @@ class BlogsController < ApplicationController
   end
 
   def create
-    @blog = Blog.create(blog_params)
-    
+    @blog = current_user.blogs.build(blog_params)
     if @blog.save
-      redirect_to @blog
+      redirect_to root_url
     else
       render :new
     end
@@ -29,7 +31,7 @@ class BlogsController < ApplicationController
     @blog = Blog.find(params[:id])
     
     if @blog.update(blog_params)
-    redirect_to @blog
+    redirect_to root_url
     
     else
      render :edit
@@ -48,5 +50,9 @@ class BlogsController < ApplicationController
   
   def blog_params
     params.require(:blog).permit(:title, :content)
+  end
+  
+  def set_blog
+    @blog = Blog.find(params[:id])
   end
 end
