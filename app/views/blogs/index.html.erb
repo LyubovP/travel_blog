@@ -4,5 +4,6 @@
 <% @blogs.each do |blog| %>
     <h3><%= link_to blog.title, blog_path(blog.id) %></h3>
     <h3><%= blog.content %></h3>
+    <h3><%= blog.user %></h3>
 <% end %>
 <%= link_to 'Create New Blog', new_blog_path %>

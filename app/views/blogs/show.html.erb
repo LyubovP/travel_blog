@@ -1,12 +1,21 @@
-<!--<h1>Blogs#show</h1>-->
-<!--<p>Find me in app/views/blogs/show.html.erb</p>-->
+<h1>Blogs#show</h1>
+<p>Find me in app/views/blogs/show.html.erb</p>
 <div class="container-fluid mt-3 text-center">
   <h3><%= @blog.title %></h3>
   <p><%= @blog.content %></p>
+  <p>
+    <strong>Author:</strong>
+    <%= @blog.user.username %>
+  </p>
 </div>
-<%= link_to "Edit", edit_blog_path(@blog.id), class: 'btn btn-outline-primary' %>
-<%= link_to "Delete", blog_path(@blog.id), method: :delete , class: 'btn btn-outline-danger'%>
-<%= link_to "Back", root_url, class: 'btn btn-outline-dark' %>
+<div>
+  <% if current_user && current_user.admin %>
+  <%= link_to "Edit", edit_blog_path(@blog.id), class: 'btn btn-outline-primary' %>
+  <%= link_to "Delete", blog_path(@blog.id), method: :delete , class: 'btn btn-outline-danger'%>
+  <% end %>
+  <%= link_to "Back", root_url, class: 'btn btn-outline-dark' %>
+</div>
+
 
   
 
