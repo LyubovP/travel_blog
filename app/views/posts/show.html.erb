@@ -1,0 +1,22 @@
+<h1>posts#show</h1>
+<p>Find me in app/views/posts/show.html.erb</p>
+<div class="container-fluid mt-3 text-center">
+  <h3><%= @post.title %></h3>
+  <p><%= @post.content %></p>
+  <p>
+    <strong>Author:</strong>
+    <%= @post.user.username %>
+  </p>
+</div>
+<div>
+  <% if current_user && current_user.admin %>
+  <%= link_to "Edit", edit_post_path(@post.id), class: 'btn btn-outline-primary' %>
+  <%= link_to "Delete", post_path(@post.id), method: :delete , class: 'btn btn-outline-danger'%>
+  <% end %>
+  <%= link_to "Back", root_url, class: 'btn btn-outline-dark' %>
+</div>
+
+
+  
+
+

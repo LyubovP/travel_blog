@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: blogs
+# Table name: posts
 #
 #  id         :integer          not null, primary key
 #  content    :text
@@ -9,11 +9,10 @@
 #  updated_at :datetime         not null
 #  user_id    :integer
 #
-
-one:
-  title: MyString
-  content: MyText
-
-two:
-  title: MyString
-  content: MyText
+class Post < ApplicationRecord
+  belongs_to :user
+  default_scope -> { order(created_at: :desc) }
+  validates :user_id, presence: true
+  validates :content, length: { maximum: 2000 }, presence: true
+  
+end

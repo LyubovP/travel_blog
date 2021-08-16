@@ -5,16 +5,16 @@
     <p>Find me in app/views/home/index.html.erb</p>
     <h2>FEATURED POSTS</h2>
 <div class="card border-light ">
-    <% @blogs.each do |blog| %>
-        <h3><%= link_to blog.title, blog_path(blog.id) %></h3>
-        <p><%= blog.content %></p>
+    <% @posts.each do |post| %>
+        <h3><%= link_to post.title, post_path(post.id) %></h3>
+        <p><%= post.content %></p>
         <p>
           <strong>Author:</strong>
-          <%= blog.user.username %>  
+          <%= post.user.username %>  
         </p>
         <p>
           <strong>Create Date:</strong>
-          <%= blog.user.created_at %>  
+          <%= post.user.created_at %>  
         </p>
     <% end %>
 </div>
