@@ -20,5 +20,22 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  
+  context 'relations' do    
+    it { is_expected.to have_many(:posts).dependent(:destroy) }    
+  end
+
+  context 'validations' do
+    [:email].each do |field|
+      it { is_expected.to validate_presence_of(field) }    
+    end    
+
+    it { is_expected.to validate_uniqueness_of(:email).case_insensitive }
+  end
+  
+   it do
+    should validate_length_of(:password).
+      is_at_least(4).
+      with_message("Password isn't long enough")
+  end
 end
